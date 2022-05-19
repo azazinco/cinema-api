@@ -43,11 +43,11 @@ public class UserController {
         return Result.success();
     }
     @PutMapping("/me/user")
-    public Result updateUser(@RequestBody UserDTO userDTO) {
-        return Result.success(userService.updateUser(userDTO));
+    public Result updateUser(@RequestBody User user) {
+        return Result.success(userService.updateUser(user));
     }
-//    @GetMapping
-//    public Result getUserInfo(@RequestBody UserDTO userDTO) {
-//        return Result.success(userService.updateUser(userDTO));
+//    @GetMapping("/me/user")
+//    public Result getUserInfo(@RequestBody User user) {
+//        return Result.success(userService.updateUser(user));
 //    }
 }

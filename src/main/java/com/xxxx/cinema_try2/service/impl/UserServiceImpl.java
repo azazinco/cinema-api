@@ -54,7 +54,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         if (one == null) {
             one = new User();
             BeanUtil.copyProperties(userDTO, one, true);
-            one.setId(IdUtil.fastSimpleUUID());one.setNickname("null");
+            one.setId(IdUtil.fastSimpleUUID());
+            one.setNickname("null");
             one.setCreateAt(new Date());
             one.setUpdateAt(new Date());
             save(one); //插入
@@ -65,9 +66,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public boolean updateUser(UserDTO userDTO) {
-        User one = getUserInfo(userDTO);
-        return updateById(one);
+    public boolean updateUser(User user) {
+        return updateById(user);
     }
 
 }

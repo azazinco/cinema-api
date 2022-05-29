@@ -4,10 +4,7 @@ package com.xxxx.cinema_try2.controller;
 import com.xxxx.cinema_try2.common.Result;
 import com.xxxx.cinema_try2.entity.Film;
 import com.xxxx.cinema_try2.service.IFilmService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -17,8 +14,8 @@ import java.util.List;
 public class FilmController {
     @Resource
     IFilmService filmService;
-    @GetMapping("/{status}")
-    public Result NowPlayingFilm(@PathVariable boolean status) {
+    @GetMapping
+    public Result NowPlayingFilm(@RequestParam(defaultValue = "") String type, @RequestParam(defaultValue = "") String region, @RequestParam boolean status) {
         return Result.success(filmService.ListAllFilm(status));
     }
     @GetMapping("/hot/{limit}")
@@ -32,4 +29,8 @@ public class FilmController {
     }
 //    @GetMapping("hot/{limit}")
 //    public
+    @GetMapping("/{id}")
+    public Result FilmDetail(@PathVariable String id) {
+        return filmService.FilmDetail(id);
+    }
 }

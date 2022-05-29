@@ -2,6 +2,7 @@ package com.xxxx.cinema_try2.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.xxxx.cinema_try2.common.Result;
 import com.xxxx.cinema_try2.entity.Film;
 import com.xxxx.cinema_try2.mapper.FilmMapper;
 import com.xxxx.cinema_try2.service.IFilmService;
@@ -31,5 +32,10 @@ public class FilmServiceImpl extends ServiceImpl<FilmMapper, Film> implements IF
         QueryWrapper<Film> queryWrapper = new QueryWrapper<>();
         queryWrapper.like("name", name);
         return list(queryWrapper);
+    }
+
+    @Override
+    public Result FilmDetail(String id) {
+        return Result.success(getById(id));
     }
 }
